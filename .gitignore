@@ -1,0 +1,41 @@
+# -----------------------
+# Virtual environment
+# -----------------------
+bloc_venv/
+venv/
+.env/
+.env
+
+# -----------------------
+# Python cache
+# -----------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# -----------------------
+# Solidity build artifacts
+# -----------------------
+*.abi
+*.bin
+*.json
+contract_abi.json
+contract_address.txt
+
+# -----------------------
+# IDE settings
+# -----------------------
+.vscode/
+.idea/
+
+# -----------------------
+# Streamlit cache
+# -----------------------
+.streamlit/
+
+# -----------------------
+# OS system files
+# -----------------------
+.DS_Store
+Thumbs.db
