@@ -5,6 +5,7 @@ from web3 import Web3
 from dotenv import load_dotenv
 load_dotenv()
 
+
 RPC_URL = os.environ["RPC_URL"]
 PRIVATE_KEY = os.environ["PRIVATE_KEY"]
 CHAIN_ID = int(os.environ.get("CHAIN_ID", "11155111"))
@@ -19,17 +20,17 @@ with open("contract_address.txt") as f:
 
 contract = w3.eth.contract(address=Web3.to_checksum_address(CONTRACT_ADDRESS), abi=ABI)
 
-def send_tx(fn, *args, gas=250000):
+def send_tx(fn, *args, gas=3000000): 
     nonce = w3.eth.get_transaction_count(acct.address)
     tx = fn.build_transaction({
         "chainId": CHAIN_ID,
         "from": acct.address,
         "nonce": nonce,
         "gas": gas,
-        "gasPrice": w3.to_wei('20', 'gwei')
+        "gasPrice": w3.to_wei('1', 'gwei') 
     })
     signed = acct.sign_transaction(tx)
-    tx_hash = w3.eth.send_raw_transaction(signed.rawTransaction)
+    tx_hash = w3.eth.send_raw_transaction(signed.raw_transaction)
     receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
     return receipt
 
